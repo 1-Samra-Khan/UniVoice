@@ -41,7 +41,7 @@ app.get(/^(?!\/api).*$/, (req, res) => {
 // Error Handler (must be last)
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`
   University Portal Server Running    
