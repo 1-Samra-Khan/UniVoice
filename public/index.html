@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniVoice – University Complaint Portal</title>
+  <meta name="description" content="UniVoice – A unified platform for students and teachers to submit, track, and vote on university complaints. Every voice matters." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div id="legacy-shell" style="display:none;">
+
+  <!-- ===== CINEMATIC LOADER ===== -->
+  <div id="cinematic-loader" class="loader-screen">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <svg class="loader-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4L42 13V20C42 30.5 34 39.5 24 43C14 39.5 6 30.5 6 20V13L24 4Z" fill="url(#loaderGrad)" opacity="0"/>
+          <path class="loader-check" d="M15 22L21 28L33 16" stroke="#F3F6FB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+          <defs>
+            <linearGradient id="loaderGrad" x1="6" y1="4" x2="42" y2="43" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#35E0D0"/>
+              <stop offset="1" stop-color="#8B7CFF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <h1 class="loader-wordmark">UniVoice</h1>
+      </div>
+      <p class="loader-tagline" id="loader-tagline"></p>
+      <div class="loader-progress">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LANDING PAGE ===== -->
+  <div id="landing-screen" class="screen" style="display:none;">
+
+    <!-- Landing Nav -->
+    <nav class="landing-nav" id="landing-nav">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" onclick="event.preventDefault();">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <path d="M20 4L36 12V18C36 26.837 29.167 35.028 20 38C10.833 35.028 4 26.837 4 18V12L20 4Z" fill="url(#navGrad)"/>
+            <path d="M13 19L18 24L27 15" stroke="#F3F6FB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="navGrad" x1="4" y1="4" x2="36" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#35E0D0"/><stop offset="1" stop-color="#8B7CFF"/></linearGradient></defs>
+          </svg>
+          <span>UniVoice</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+          <a href="#section-overview" class="nav-link" onclick="smoothScroll(event,'section-overview')">Overview</a>
+          <a href="#section-how" class="nav-link" onclick="smoothScroll(event,'section-how')">How It Works</a>
+          <a href="#section-solutions" class="nav-link" onclick="smoothScroll(event,'section-solutions')">Solutions</a>
+          <a href="#section-roles" class="nav-link" onclick="smoothScroll(event,'section-roles')">Roles</a>
+          <a href="#section-about" class="nav-link" onclick="smoothScroll(event,'section-about')">About</a>
+        </div>
+        <div class="nav-actions">
+          <a href="#" class="nav-link" onclick="event.preventDefault();showAuthScreen('login');">Log in</a>
+          <button class="btn-accent" onclick="showAuthScreen('register')">Sign up</button>
+          <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div class="mobile-nav hidden" id="mobile-nav">
+        <a href="#section-overview" class="mob-link" onclick="smoothScroll(event,'section-overview');closeMobileMenu()">Overview</a>
+        <a href="#section-how" class="mob-link" onclick="smoothScroll(event,'section-how');closeMobileMenu()">How It Works</a>
+        <a href="#section-solutions" class="mob-link" onclick="smoothScroll(event,'section-solutions');closeMobileMenu()">Solutions</a>
+        <a href="#section-roles" class="mob-link" onclick="smoothScroll(event,'section-roles');closeMobileMenu()">Roles</a>
+        <a href="#section-about" class="mob-link" onclick="smoothScroll(event,'section-about');closeMobileMenu()">About</a>
+        <div class="mob-actions">
+          <a href="#" class="mob-link" onclick="event.preventDefault();showAuthScreen('login');closeMobileMenu();">Log in</a>
+          <button class="btn-accent" onclick="showAuthScreen('register');closeMobileMenu();">Sign up</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section" id="section-overview">
+      <div class="hero-bg-glow"></div>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-eyebrow" id="hero-eyebrow">A BETTER CAMPUS STARTS HERE</p>
+          <h1 class="hero-headline" id="hero-headline">Make your campus a<br/> better place to be <span class="text-gradient">heard.</span></h1>
+          <p class="hero-desc" id="hero-desc">UniVoice brings students, teachers, and university authorities together through a transparent platform to report campus issues, track resolutions, and create meaningful improvements.</p>
+          <div class="hero-ctas" id="hero-ctas">
+            <button class="btn-accent btn-lg" onclick="showAuthScreen('register')">Raise Your Voice</button>
+            <button class="btn-outline btn-lg" onclick="smoothScroll(event,'section-solutions')">Explore the Platform</button>
+          </div>
+          <p class="hero-caption" id="hero-caption">Report clearly. Track transparently. Improve together.</p>
+        </div>
+        <div class="hero-visual" id="hero-visual">
+          <svg class="hero-illustration" viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Campus outline -->
+            <rect class="illus-building" x="120" y="180" width="280" height="180" rx="16" stroke="#35E0D0" stroke-width="1.5" opacity="0.25" fill="none"/>
+            <rect class="illus-building" x="160" y="200" width="80" height="60" rx="8" stroke="#8B7CFF" stroke-width="1" opacity="0.2" fill="none"/>
+            <rect class="illus-building" x="280" y="200" width="80" height="60" rx="8" stroke="#8B7CFF" stroke-width="1" opacity="0.2" fill="none"/>
+            <!-- Roof -->
+            <path class="illus-building" d="M100 185 L260 100 L420 185" stroke="#35E0D0" stroke-width="1.5" opacity="0.3" fill="none"/>
+            <!-- Floating complaint cards -->
+            <g class="illus-float-card" opacity="0">
+              <rect x="30" y="60" width="140" height="50" rx="10" fill="#1B2530" stroke="#35E0D0" stroke-width="1"/>
+              <rect x="45" y="74" width="70" height="6" rx="3" fill="#35E0D0" opacity="0.6"/>
+              <rect x="45" y="86" width="100" height="4" rx="2" fill="#A7B3C2" opacity="0.3"/>
+              <circle cx="148" cy="74" r="8" fill="#FFBD69" opacity="0.5"/>
+              <text x="144" y="78" fill="#0D1117" font-size="8" font-weight="700">⏳</text>
+            </g>
+            <g class="illus-float-card" opacity="0">
+              <rect x="350" y="30" width="150" height="50" rx="10" fill="#1B2530" stroke="#43D9A3" stroke-width="1"/>
+              <rect x="365" y="44" width="80" height="6" rx="3" fill="#43D9A3" opacity="0.6"/>
+              <rect x="365" y="56" width="110" height="4" rx="2" fill="#A7B3C2" opacity="0.3"/>
+              <circle cx="478" cy="44" r="8" fill="#43D9A3" opacity="0.5"/>
+              <text x="474" y="48" fill="#0D1117" font-size="8" font-weight="700">✓</text>
+            </g>
+            <g class="illus-float-card" opacity="0">
+              <rect x="60" y="310" width="130" height="50" rx="10" fill="#1B2530" stroke="#8B7CFF" stroke-width="1"/>
+              <rect x="75" y="324" width="60" height="6" rx="3" fill="#8B7CFF" opacity="0.6"/>
+              <rect x="75" y="336" width="90" height="4" rx="2" fill="#A7B3C2" opacity="0.3"/>
+            </g>
+            <!-- People nodes -->
+            <circle class="illus-person" cx="260" cy="140" r="14" fill="#1B2530" stroke="#35E0D0" stroke-width="1.5" opacity="0"/>
+            <circle class="illus-person" cx="100" cy="240" r="10" fill="#1B2530" stroke="#8B7CFF" stroke-width="1.5" opacity="0"/>
+            <circle class="illus-person" cx="420" cy="260" r="10" fill="#1B2530" stroke="#FFBD69" stroke-width="1.5" opacity="0"/>
+            <!-- Connection lines -->
+            <line class="illus-line" x1="260" y1="154" x2="260" y2="180" stroke="#35E0D0" stroke-width="1" opacity="0" stroke-dasharray="4"/>
+            <line class="illus-line" x1="110" y1="240" x2="120" y2="240" stroke="#8B7CFF" stroke-width="1" opacity="0" stroke-dasharray="4"/>
+            <line class="illus-line" x1="410" y1="260" x2="400" y2="260" stroke="#FFBD69" stroke-width="1" opacity="0" stroke-dasharray="4"/>
+            <!-- Notification dots -->
+            <circle class="illus-notif" cx="170" cy="55" r="5" fill="#FF6B81" opacity="0"/>
+            <circle class="illus-notif" cx="500" cy="25" r="5" fill="#35E0D0" opacity="0"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campus Impact Strip -->
+    <section class="impact-strip" id="impact-strip">
+      <div class="strip-inner">
+        <div class="strip-item"><div class="strip-icon">🎓</div><span>Student Voice</span></div>
+        <div class="strip-item"><div class="strip-icon">📚</div><span>Faculty Participation</span></div>
+        <div class="strip-item"><div class="strip-icon">🔍</div><span>Transparent Resolution</span></div>
+        <div class="strip-item"><div class="strip-icon">🛡️</div><span>Accountable Authorities</span></div>
+        <div class="strip-item"><div class="strip-icon">🌟</div><span>Better Campus Experience</span></div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="landing-section" id="section-problem">
+      <div class="section-inner">
+        <p class="section-eyebrow">THE PROBLEM</p>
+        <h2 class="section-headline">Campus problems should not<br/> disappear into <span class="text-gradient">silence.</span></h2>
+        <div class="problem-grid">
+          <div class="problem-card"><div class="p-icon">📡</div><h3>Scattered Reporting</h3><p>Campus concerns may be reported through disconnected channels, making it difficult to track them in one place.</p></div>
+          <div class="problem-card"><div class="p-icon">👁️</div><h3>Limited Visibility</h3><p>People who report an issue may not receive clear updates about its progress.</p></div>
+          <div class="problem-card"><div class="p-icon">⏱️</div><h3>Slow Communication</h3><p>Students, teachers, and authorities need a clearer way to coordinate around campus concerns.</p></div>
+          <div class="problem-card"><div class="p-icon">❓</div><h3>Unclear Accountability</h3><p>Without a visible resolution process, it can be difficult to know whether an issue has actually been addressed.</p></div>
+          <div class="problem-card"><div class="p-icon">💬</div><h3>Missing Feedback</h3><p>Universities need a structured way to collect feedback and understand whether reported problems have been resolved satisfactorily.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="landing-section section-alt" id="section-solutions">
+      <div class="section-inner">
+        <p class="section-eyebrow">THE UNIVOICE APPROACH</p>
+        <h2 class="section-headline">One platform. A clearer path from<br/> complaint to <span class="text-gradient">resolution.</span></h2>
+        <div class="solution-steps">
+          <div class="sol-step"><div class="sol-num">01</div><h3>Report</h3><p>Students and teachers submit complaints with relevant details.</p></div>
+          <div class="sol-step"><div class="sol-num">02</div><h3>Prioritize</h3><p>Community voting helps highlight issues that affect more people.</p></div>
+          <div class="sol-step"><div class="sol-num">03</div><h3>Resolve</h3><p>Authorized personnel review complaints, document corrective action, and mark issues as fixed.</p></div>
+          <div class="sol-step"><div class="sol-num">04</div><h3>Verify</h3><p>The person who submitted the complaint confirms whether the issue has been resolved and can provide feedback.</p></div>
+        </div>
+        <div class="status-timeline" id="status-timeline">
+          <div class="tl-node tl-pending"><span class="tl-dot"></span><span class="tl-label">Pending</span></div>
+          <div class="tl-line" id="tl-line-1"></div>
+          <div class="tl-node tl-fixed"><span class="tl-dot"></span><span class="tl-label">Fixed by Authority</span></div>
+          <div class="tl-line" id="tl-line-2"></div>
+          <div class="tl-node tl-completed"><span class="tl-dot"></span><span class="tl-label">Completed</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="landing-section" id="section-how">
+      <div class="section-inner">
+        <p class="section-eyebrow">HOW IT WORKS</p>
+        <h2 class="section-headline">From sign-up to <span class="text-gradient">resolution.</span></h2>
+        <div class="how-timeline">
+          <div class="how-step"><div class="how-num">1</div><div class="how-body"><h3>Join UniVoice</h3><p>Access the platform through the appropriate account.</p></div></div>
+          <div class="how-step"><div class="how-num">2</div><div class="how-body"><h3>Raise a Concern</h3><p>Submit a complaint with a title, description, and category.</p></div></div>
+          <div class="how-step"><div class="how-num">3</div><div class="how-body"><h3>Follow Progress</h3><p>View status updates and complaint activity.</p></div></div>
+          <div class="how-step"><div class="how-num">4</div><div class="how-body"><h3>Verify the Resolution</h3><p>Confirm whether the reported issue has been fixed.</p></div></div>
+          <div class="how-step"><div class="how-num">5</div><div class="how-body"><h3>Share Feedback</h3><p>Rate the completed resolution and leave a comment.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roles Section -->
+    <section class="landing-section section-alt" id="section-roles">
+      <div class="section-inner">
+        <p class="section-eyebrow">BUILT FOR THE CAMPUS COMMUNITY</p>
+        <h2 class="section-headline">Three perspectives. One better <span class="text-gradient">campus.</span></h2>
+        <div class="roles-grid">
+          <div class="role-card">
+            <div class="role-icon">🎓</div>
+            <h3>Student</h3>
+            <p class="role-desc">Make your concerns visible and help bring attention to the issues that matter.</p>
+            <ul class="role-perms">
+              <li>Submit complaints</li>
+              <li>Vote on complaints</li>
+              <li>Track personal complaints</li>
+              <li>Receive notifications</li>
+              <li>Confirm resolutions</li>
+              <li>Rate completed resolutions</li>
+            </ul>
+          </div>
+          <div class="role-card role-card-featured">
+            <div class="role-icon">📚</div>
+            <h3>Teacher</h3>
+            <p class="role-desc">Contribute to a better learning environment by reporting issues and supporting campus improvements.</p>
+            <ul class="role-perms">
+              <li>Submit complaints</li>
+              <li>Vote on complaints</li>
+              <li>Follow complaint progress</li>
+              <li>Receive notifications</li>
+              <li>Confirm resolutions</li>
+              <li>Provide feedback</li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <div class="role-icon">🛡️</div>
+            <h3>University Authority</h3>
+            <p class="role-desc">Turn reported concerns into documented action and measurable progress.</p>
+            <ul class="role-perms">
+              <li>Review complaints</li>
+              <li>Access complaint statistics</li>
+              <li>Mark issues as fixed</li>
+              <li>Track unresolved issues</li>
+              <li>Notify reporters</li>
+            </ul>
+          </div>
+        </div>
+        <p class="admin-note">🔐 <strong>Administrative access:</strong> Authorized administrators can manage user accounts and platform permissions.</p>
+      </div>
+    </section>
+
+    <!-- Complaint Lifecycle Showcase -->
+    <section class="landing-section" id="section-lifecycle">
+      <div class="section-inner">
+        <p class="section-eyebrow">LIFECYCLE PREVIEW</p>
+        <h2 class="section-headline">Watch a complaint journey from start to <span class="text-gradient">finish.</span></h2>
+        <div class="lifecycle-card">
+          <div class="lc-header">
+            <span class="lc-category">Classroom Infrastructure</span>
+            <span class="lc-votes" id="lc-sample-votes" style="cursor: pointer; user-select: none;" onclick="toggleSampleVote()" title="Click to test community voting">
+              <span id="lc-vote-arrow">▲</span> <span id="lc-vote-count">12</span> votes
+            </span>
+          </div>
+          <h3 class="lc-title">Classroom Projector Not Working</h3>
+          <p class="lc-desc">Multiple projectors in B Block classrooms are non-functional, affecting scheduled lectures in the CS department.</p>
+          <div class="lc-timeline" id="lc-timeline">
+            <div class="lc-step lc-active" id="lc-step-0" onclick="setLifecycleStep(0)" style="cursor: pointer;" title="Stage 1: Pending"><div class="lc-dot"></div><span>Pending</span></div>
+            <div class="lc-connector"><div class="lc-connector-fill" id="lc-fill-1"></div></div>
+            <div class="lc-step" id="lc-step-1" onclick="setLifecycleStep(1)" style="cursor: pointer;" title="Stage 2: Fixed by Authority"><div class="lc-dot"></div><span>Fixed by Authority</span></div>
+            <div class="lc-connector"><div class="lc-connector-fill" id="lc-fill-2"></div></div>
+            <div class="lc-step" id="lc-step-2" onclick="setLifecycleStep(2)" style="cursor: pointer;" title="Stage 3: Completed"><div class="lc-dot"></div><span>Completed</span></div>
+          </div>
+          <div class="lc-note hidden" id="lc-note">
+            <p><strong>Resolution Note:</strong> Projector connectivity checked and the display system restored.</p>
+          </div>
+          <div class="lc-interactive-bar">
+            <button type="button" class="btn-outline btn-sm" id="lc-replay-btn" onclick="runLifecycleAnimation(true)">▶ Replay Journey</button>
+            <button type="button" class="btn-outline btn-sm" id="lc-next-btn" onclick="nextLifecycleStep()">Next Stage &rarr;</button>
+          </div>
+          <p class="lc-disclaimer">This is illustrative sample content, not a real complaint.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About UniVoice -->
+    <section class="landing-section section-alt" id="section-about">
+      <div class="section-inner">
+        <p class="section-eyebrow">OUR MISSION</p>
+        <h2 class="section-headline">A better campus begins when<br/> people are <span class="text-gradient">heard.</span></h2>
+        <p class="about-text">UniVoice is designed to make university complaint management more transparent, structured, and accessible. By bringing reporting, prioritization, resolution tracking, and feedback into one experience, the platform helps students, teachers, and university authorities work toward a better campus environment.</p>
+
+        <!-- Creator Credit -->
+        <div class="creator-card">
+          <div class="creator-avatar">SK</div>
+          <div class="creator-info">
+            <h3>Created by Samra Khan</h3>
+            <p>Building digital experiences that connect people, solve practical problems, and create meaningful change.</p>
+            <a href="https://github.com/1-Samra-Khan" target="_blank" rel="noopener noreferrer" class="creator-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              github.com/1-Samra-Khan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+              <path d="M20 4L36 12V18C36 26.837 29.167 35.028 20 38C10.833 35.028 4 26.837 4 18V12L20 4Z" fill="url(#footGrad)"/>
+              <path d="M13 19L18 24L27 15" stroke="#F3F6FB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs><linearGradient id="footGrad" x1="4" y1="4" x2="36" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#35E0D0"/><stop offset="1" stop-color="#8B7CFF"/></linearGradient></defs>
+            </svg>
+            <span>UniVoice</span>
+          </div>
+          <p class="footer-mission">Every voice matters. Every issue deserves action.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Platform</h4>
+            <a href="#section-overview" onclick="smoothScroll(event,'section-overview')">Overview</a>
+            <a href="#section-how" onclick="smoothScroll(event,'section-how')">How It Works</a>
+            <a href="#section-roles" onclick="smoothScroll(event,'section-roles')">Roles</a>
+          </div>
+          <div class="footer-col">
+            <h4>Access</h4>
+            <a href="#" onclick="event.preventDefault();showAuthScreen('login');">Log in</a>
+            <a href="#" onclick="event.preventDefault();showAuthScreen('register');">Sign up</a>
+            <a href="#section-about" onclick="smoothScroll(event,'section-about')">About</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="https://github.com/1-Samra-Khan" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="footer-year"></span> UniVoice. Crafted with purpose by <a href="https://github.com/1-Samra-Khan" target="_blank" rel="noopener noreferrer">Samra Khan</a>.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== AUTH SCREENS ===== -->
+  <div id="auth-screen" class="screen" style="display:none;">
+    <div class="auth-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <button class="auth-back-btn" onclick="showLanding()" title="Back to home">&larr; Back</button>
+    <div class="auth-container" id="auth-container">
+      <!-- Logo -->
+      <div class="auth-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4L36 12V18C36 26.837 29.167 35.028 20 38C10.833 35.028 4 26.837 4 18V12L20 4Z" fill="url(#grad1)"/>
+            <path d="M13 19L18 24L27 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="grad1" x1="4" y1="4" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#35E0D0"/>
+                <stop offset="1" stop-color="#8B7CFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <h1 class="logo-title">UniVoice</h1>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+        <p class="auth-form-desc" id="login-desc">Welcome back to UniVoice.</p>
+        <p class="auth-form-sub">Sign in to continue making your campus better.</p>
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M22 7l-10 7L2 7"/></svg></span>
+            <input type="email" id="login-email" placeholder="your@university.edu" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+            <input type="password" id="login-password" placeholder="Enter your password" required autocomplete="current-password" />
+            <button type="button" class="toggle-pw" onclick="togglePassword('login-password')">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="login-error" class="form-error hidden"></div>
+        <button type="submit" class="btn-primary btn-full" id="login-btn">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-loader hidden"></span>
+        </button>
+        <p class="auth-footer-text">Don't have an account? <a href="#" onclick="event.preventDefault();switchTab('register')">Create an account</a></p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form hidden" onsubmit="handleRegister(event)">
+        <p class="auth-form-desc" id="reg-desc">Your voice belongs here.</p>
+        <p class="auth-form-sub">Join your campus community and help turn concerns into action.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+              <input type="text" id="reg-name" placeholder="Your full name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Role</label>
+            <div class="input-wrapper">
+              <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></span>
+              <select id="reg-role" onchange="toggleRoleFields()" required>
+                <option value="">Select role</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M22 7l-10 7L2 7"/></svg></span>
+            <input type="email" id="reg-email" placeholder="your@university.edu" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Department</label>
+          <div class="input-wrapper">
+            <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M9 21V11h6v10M5 7l7-4 7 4"/></svg></span>
+            <select id="reg-department">
+              <option value="">Select department</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Business Administration">Business Administration</option>
+              <option value="Medicine">Medicine</option>
+              <option value="Arts & Humanities">Arts & Humanities</option>
+              <option value="Law">Law</option>
+              <option value="Natural Sciences">Natural Sciences</option>
+              <option value="Social Sciences">Social Sciences</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <!-- Student fields -->
+        <div id="student-fields" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Registration Number</label>
+              <div class="input-wrapper">
+                <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg></span>
+                <input type="text" id="reg-reg-number" placeholder="e.g. CS2021-001" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Semester</label>
+              <div class="input-wrapper">
+                <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+                <select id="reg-semester">
+                  <option value="">Semester</option>
+                  <option value="1st">1st</option>
+                  <option value="2nd">2nd</option>
+                  <option value="3rd">3rd</option>
+                  <option value="4th">4th</option>
+                  <option value="5th">5th</option>
+                  <option value="6th">6th</option>
+                  <option value="7th">7th</option>
+                  <option value="8th">8th</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Teacher fields -->
+        <div id="teacher-fields" class="hidden">
+          <div class="form-group">
+            <label>Employee ID</label>
+            <div class="input-wrapper">
+              <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg></span>
+              <input type="text" id="reg-emp-id" placeholder="e.g. EMP-2023-001" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+            <input type="password" id="reg-password" placeholder="Minimum 6 characters" required autocomplete="new-password" />
+            <button type="button" class="toggle-pw" onclick="togglePassword('reg-password')">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+            <input type="password" id="reg-confirm-password" placeholder="Confirm your password" required autocomplete="new-password" />
+            <button type="button" class="toggle-pw" onclick="togglePassword('reg-confirm-password')">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="reg-error" class="form-error hidden"></div>
+        <button type="submit" class="btn-primary btn-full" id="register-btn">
+          <span class="btn-text">Create Account</span>
+          <span class="btn-loader hidden"></span>
+        </button>
+        <p class="auth-footer-text">Already have an account? <a href="#" onclick="event.preventDefault();switchTab('login')">Sign in</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== MAIN APP ===== -->
+  <div id="app-screen" class="screen" style="display:none;">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon small">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4L36 12V18C36 26.837 29.167 35.028 20 38C10.833 35.028 4 26.837 4 18V12L20 4Z" fill="url(#grad2)"/>
+            <path d="M13 19L18 24L27 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="grad2" x1="4" y1="4" x2="36" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#35E0D0"/><stop offset="1" stop-color="#8B7CFF"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span>UniVoice</span>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" id="nav-dashboard" onclick="showPage('dashboard')">
+          <span class="nav-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>Dashboard</span>
+        </button>
+        <button class="nav-item" id="nav-complaints" onclick="showPage('complaints')">
+          <span class="nav-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></span><span>All Complaints</span>
+        </button>
+        <button class="nav-item" id="nav-my-complaints" onclick="showPage('my-complaints')" data-roles="student,teacher">
+          <span class="nav-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></span><span>My Complaints</span>
+        </button>
+        <button class="nav-item" id="nav-new-complaint" onclick="showPage('new-complaint')" data-roles="student,teacher">
+          <span class="nav-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span><span>Post Complaint</span>
+        </button>
+        <button class="nav-item" id="nav-admin" onclick="showPage('admin')" data-roles="admin">
+          <span class="nav-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span><span>Admin Panel</span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar" id="sidebar-avatar"></div>
+          <div class="user-info">
+            <p class="user-name" id="sidebar-name">Loading...</p>
+            <p class="user-role-badge" id="sidebar-role"></p>
+          </div>
+        </div>
+        <button class="btn-logout" onclick="logout()">Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <!-- Top bar -->
+      <header class="topbar">
+        <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <div class="topbar-title" id="page-title">Dashboard</div>
+        <div class="topbar-actions">
+          <button class="notif-btn" onclick="showPage('notifications')" id="notif-btn">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <span class="notif-badge hidden" id="notif-count">0</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Pages -->
+      <div class="page-content">
+        <!-- Dashboard Page -->
+        <div class="page active" id="page-dashboard">
+          <div class="page-header">
+            <h2>Welcome back, <span id="welcome-name"></span></h2>
+            <p>Here's what's happening at your university today</p>
+          </div>
+          <div class="stats-grid" id="stats-grid">
+            <div class="stat-card" style="--accent: #35E0D0">
+              <div class="stat-icon"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+              <div class="stat-info">
+                <p class="stat-label">Total Complaints</p>
+                <h3 class="stat-value" id="stat-total">—</h3>
+              </div>
+            </div>
+            <div class="stat-card" style="--accent: #FFBD69">
+              <div class="stat-icon"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <div class="stat-info">
+                <p class="stat-label">Pending</p>
+                <h3 class="stat-value" id="stat-pending">—</h3>
+              </div>
+            </div>
+            <div class="stat-card" style="--accent: #43D9A3">
+              <div class="stat-icon"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+              <div class="stat-info">
+                <p class="stat-label">Completed</p>
+                <h3 class="stat-value" id="stat-completed">—</h3>
+              </div>
+            </div>
+            <div class="stat-card" style="--accent: #8B7CFF">
+              <div class="stat-icon"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+              <div class="stat-info">
+                <p class="stat-label">Fixed by Authority</p>
+                <h3 class="stat-value" id="stat-fixed">—</h3>
+              </div>
+            </div>
+          </div>
+          <div class="section-header">
+            <h3>Top Voted Complaints</h3>
+            <button class="btn-link" onclick="showPage('complaints')">View All →</button>
+          </div>
+          <div id="top-complaints-list" class="complaints-grid"></div>
+        </div>
+
+        <!-- All Complaints Page -->
+        <div class="page hidden" id="page-complaints">
+          <div class="page-header">
+            <h2>All Complaints</h2>
+            <p>Browse and vote on university complaints</p>
+          </div>
+          <div class="filters-bar">
+            <div class="search-wrapper">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="text" id="search-input" placeholder="Search complaints..." oninput="debounceSearch()" />
+            </div>
+            <select id="filter-status" onchange="loadComplaints()">
+              <option value="">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="in_review">In Review</option>
+              <option value="fixed_by_authority">Fixed by Authority</option>
+              <option value="completed">Completed</option>
+            </select>
+            <select id="filter-category" onchange="loadComplaints()">
+              <option value="">All Categories</option>
+              <option value="Academic">Academic</option>
+              <option value="Infrastructure">Infrastructure</option>
+              <option value="Facilities">Facilities</option>
+              <option value="Administration">Administration</option>
+              <option value="Faculty">Faculty</option>
+              <option value="Hostel">Hostel</option>
+              <option value="Transport">Transport</option>
+              <option value="Library">Library</option>
+              <option value="Fee">Fee</option>
+              <option value="Examination">Examination</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div id="complaints-list" class="complaints-grid"></div>
+          <div id="pagination" class="pagination"></div>
+        </div>
+
+        <!-- My Complaints Page -->
+        <div class="page hidden" id="page-my-complaints">
+          <div class="page-header">
+            <h2>My Complaints</h2>
+            <p>Track and manage your submitted complaints</p>
+          </div>
+          <div id="my-complaints-list" class="complaints-grid"></div>
+        </div>
+
+        <!-- Post New Complaint Page -->
+        <div class="page hidden" id="page-new-complaint">
+          <div class="page-header">
+            <h2>Post a Complaint</h2>
+            <p>Describe your issue in detail to get it resolved faster</p>
+          </div>
+          <div class="form-card">
+            <form id="complaint-form" onsubmit="submitComplaint(event)">
+              <div class="form-group">
+                <label>Complaint Title <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></span>
+                  <input type="text" id="c-title" placeholder="Brief summary of your issue" required maxlength="200" />
+                </div>
+                <small class="char-count" id="title-count">0 / 200</small>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Category <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg></span>
+                    <select id="c-category" required>
+                      <option value="">Select category</option>
+                      <option value="Academic">Academic</option>
+                      <option value="Infrastructure">Infrastructure</option>
+                      <option value="Facilities">Facilities</option>
+                      <option value="Administration">Administration</option>
+                      <option value="Faculty">Faculty</option>
+                      <option value="Hostel">Hostel</option>
+                      <option value="Transport">Transport</option>
+                      <option value="Library">Library</option>
+                      <option value="Fee">Fee</option>
+                      <option value="Examination">Examination</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Tags (optional)</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg></span>
+                    <input type="text" id="c-tags" placeholder="e.g. urgent, wifi, parking" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Description <span class="required">*</span></label>
+                <textarea id="c-description" placeholder="Describe your issue in detail. Be specific about location, time, and impact." required maxlength="2000" oninput="updateDescCount()"></textarea>
+                <small class="char-count" id="desc-count">0 / 2000</small>
+              </div>
+              <div id="complaint-form-error" class="form-error hidden"></div>
+              <div class="form-actions">
+                <button type="button" class="btn-secondary" onclick="showPage('complaints')">Cancel</button>
+                <button type="submit" class="btn-primary" id="submit-complaint-btn">
+                  <span class="btn-text">Submit Complaint</span>
+                  <span class="btn-loader hidden"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Admin Panel Page -->
+        <div class="page hidden" id="page-admin">
+          <div class="page-header">
+            <h2>Admin Panel</h2>
+            <p>Manage users and create privileged accounts</p>
+          </div>
+          <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('users')">Users</button>
+            <button class="admin-tab" onclick="switchAdminTab('create')">Create Account</button>
+          </div>
+          <div id="admin-tab-users" class="admin-tab-content">
+            <div class="table-wrapper">
+              <table class="data-table" id="users-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="users-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div id="admin-tab-create" class="admin-tab-content hidden">
+            <div class="form-card" style="max-width: 560px;">
+              <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Create Authority / Admin Account</h3>
+              <form id="create-user-form" onsubmit="createPrivilegedUser(event)">
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                    <input type="text" id="cu-name" placeholder="Full name" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M22 7l-10 7L2 7"/></svg></span>
+                    <input type="email" id="cu-email" placeholder="Email address" required />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Role</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-2.82 1.18V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 14.92a1.65 1.65 0 00-1.51-1.08H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>
+                      <select id="cu-role" required>
+                        <option value="">Select role</option>
+                        <option value="authority">Authority</option>
+                        <option value="admin">Admin</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Department</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v14M21 7v14M9 21V11h6v10M5 7l7-4 7 4"/></svg></span>
+                      <input type="text" id="cu-department" placeholder="Department (optional)" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <div class="input-wrapper">
+                    <span class="input-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+                    <input type="password" id="cu-password" placeholder="Min 6 characters" required />
+                  </div>
+                </div>
+                <div id="cu-error" class="form-error hidden"></div>
+                <button type="submit" class="btn-primary">Create Account</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications Page -->
+        <div class="page hidden" id="page-notifications">
+          <div class="page-header">
+            <h2>Notifications</h2>
+            <p>Your latest updates and alerts</p>
+          </div>
+          <div id="notifications-list"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== COMPLAINT DETAIL MODAL ===== -->
+  <div class="modal-overlay hidden" id="complaint-modal" onclick="closeModal(event)">
+    <div class="modal" id="modal-content">
+      <button class="modal-close" onclick="closeComplaintModal()">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST NOTIFICATIONS ===== -->
+  <div id="toast-container"></div>
+
+  <!-- ===== CONFIRMATION DIALOG ===== -->
+  <div class="modal-overlay hidden" id="confirm-dialog" onclick="if(event.target===this) closeConfirm()">
+    <div class="confirm-box">
+      <h3 id="confirm-title">Are you sure?</h3>
+      <p id="confirm-message"></p>
+      <div class="confirm-actions">
+        <button class="btn-secondary" onclick="closeConfirm()">Cancel</button>
+        <button class="btn-danger" id="confirm-ok-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <div id="root"></div>
+
+  <script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script>
+    (function () {
+      const legacyShell = document.getElementById('legacy-shell');
+      const rootElement = document.getElementById('root');
+      if (!legacyShell || !rootElement || !window.React || !window.ReactDOM) return;
+
+      const content = legacyShell.innerHTML;
+      legacyShell.remove();
+      ReactDOM.createRoot(rootElement).render(
+        React.createElement('div', {
+          dangerouslySetInnerHTML: { __html: content }
+        })
+      );
+    })();
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

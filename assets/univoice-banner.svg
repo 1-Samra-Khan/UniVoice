@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">UniVoice — Every voice matters</title>
+  <desc id="desc">An animated campus complaint dashboard with a floating resolution card.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17113c"/>
+      <stop offset=".48" stop-color="#172b55"/>
+      <stop offset="1" stop-color="#063f4b"/>
+      <animate attributeName="x2" values="1;0;1" dur="14s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38f9d7"/>
+      <stop offset=".52" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#ff71ce"/>
+      <animate attributeName="x1" values="0;1;0" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#25204a"/>
+      <stop offset="1" stop-color="#102c40"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#ff71ce" stop-opacity=".35"/>
+      <stop offset=".55" stop-color="#38f9d7" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#38f9d7" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".32"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="360" rx="26" fill="url(#background)"/>
+  <circle cx="1015" cy="115" r="270" fill="url(#glow)">
+    <animate attributeName="r" values="230;285;230" dur="7s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".65;1;.65" dur="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="555" cy="40" r="190" fill="url(#glow)" opacity=".48"/>
+  <g fill="#fff">
+    <circle cx="665" cy="60" r="2" opacity=".75"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></circle>
+    <circle cx="1100" cy="274" r="3" opacity=".55"><animate attributeName="opacity" values="1;.2;1" dur="4s" repeatCount="indefinite"/></circle>
+    <circle cx="635" cy="300" r="2" opacity=".65"><animate attributeName="opacity" values=".15;.9;.15" dur="5s" repeatCount="indefinite"/></circle>
+    <circle cx="1160" cy="54" r="2" opacity=".6"><animate attributeName="opacity" values=".2;1;.2" dur="3.5s" repeatCount="indefinite"/></circle>
+  </g>
+  <path d="M0 300C230 230 350 400 610 300s430-25 590-115" fill="none" stroke="url(#accent)" stroke-dasharray="24 16" stroke-dashoffset="0" stroke-opacity=".36" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" values="0;240" dur="12s" repeatCount="indefinite"/>
+  </path>
+  <g transform="translate(74 82)">
+    <path d="M42 0 80 19v20c0 27-16 48-38 57C20 87 4 66 4 39V19L42 0Z" fill="url(#accent)"/>
+    <path d="m25 43 12 12 24-26" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+  </g>
+  <text x="74" y="212" fill="#fff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="60" font-weight="800" letter-spacing="-2">UniVoice</text>
+  <text x="77" y="252" fill="#d8ddff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19">A better campus starts when every voice is heard.</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="600">
+    <rect x="77" y="281" width="110" height="29" rx="14.5" fill="#38f9d7" fill-opacity=".2" stroke="#38f9d7" stroke-opacity=".65"/>
+    <text x="132" y="300" fill="#8fffea" text-anchor="middle">COMMUNITY</text>
+    <rect x="198" y="281" width="102" height="29" rx="14.5" fill="#a78bfa" fill-opacity=".2" stroke="#a78bfa" stroke-opacity=".65"/>
+    <text x="249" y="300" fill="#d3c5ff" text-anchor="middle">TRANSPARENT</text>
+    <rect x="311" y="281" width="103" height="29" rx="14.5" fill="#ff71ce" fill-opacity=".2" stroke="#ff71ce" stroke-opacity=".65"/>
+    <text x="362" y="300" fill="#ffb8e7" text-anchor="middle">ACTIONABLE</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="700" y="76" width="420" height="214" rx="20" fill="url(#card)" stroke="#9d8bff" stroke-opacity=".52"/>
+    <circle cx="728" cy="105" r="5" fill="#ff70a6"/>
+    <circle cx="746" cy="105" r="5" fill="#ffd166"/>
+    <circle cx="764" cy="105" r="5" fill="#38f9d7"/>
+    <text x="728" y="145" fill="#fff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700">Campus issue resolved</text>
+    <text x="728" y="169" fill="#c3c9e8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13">Library study space · Infrastructure</text>
+    <rect x="728" y="190" width="350" height="1" fill="#514b78"/>
+    <circle cx="739" cy="222" r="11" fill="#38f9d7" fill-opacity=".2"/>
+    <path d="m734 222 4 4 7-8" fill="none" stroke="#38f9d7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <text x="760" y="226" fill="#d0d4eb" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13">Verified by the student</text>
+    <rect x="963" y="211" width="115" height="26" rx="13" fill="#38f9d7" fill-opacity=".18"/>
+    <text x="1020" y="228" fill="#8fffea" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" text-anchor="middle">COMPLETED</text>
+    <path d="M728 258h218" stroke="#514b78" stroke-linecap="round" stroke-width="5"/>
+    <path d="M728 258h168" stroke="url(#accent)" stroke-linecap="round" stroke-width="5">
+      <animate attributeName="stroke-dasharray" values="0 218;168 218;168 218" keyTimes="0;.75;1" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>
