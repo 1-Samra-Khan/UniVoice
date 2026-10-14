@@ -93,10 +93,10 @@ Copy-Item .env.example .env
 On macOS or Linux, use `cp .env.example .env` instead. Edit `.env` and set a strong, private `JWT_SECRET` and your MongoDB connection string:
 
 ```env
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/university_portal
-JWT_SECRET=replace-with-a-long-random-secret
-JWT_EXPIRE=7d
+PORT=
+MONGO_URI=
+JWT_SECRET=
+JWT_EXPIRE=
 ```
 
 Start the app:
